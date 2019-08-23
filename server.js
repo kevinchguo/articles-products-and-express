@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require('method-override');
 const bodyParser = require("body-parser"); //application middleware
 const exphbs = require('express-handlebars');
 const app = express();
@@ -8,6 +9,7 @@ const articleRoutes = require('./routes/articles');
 
 const PORT = 8080;
 
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extened: false }));
 app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs'); //uses res.render()

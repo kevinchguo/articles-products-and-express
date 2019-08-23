@@ -4,12 +4,12 @@ const exphbs = require('express-handlebars');
 const app = express();
 
 let productsDB = require('../db/products.js');
+let productObj = productsDB.returnProducts();
 
 app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs'); //uses res.render()
 
 router.get('/', (req, res) => {
-    let productObj = productsDB.returnProducts();
     res.render('products', { productObj: productObj });
 });
 
@@ -17,24 +17,42 @@ router.get('/new', (req, res) => {
     res.render('newProducts');
 });
 
-router.get('/:id', (req, res) => {
-    let productObj = productsDB.returnProducts();
-    console.log(productObj)
-    console.log(productObj[req.params.id].name);
-    res.render('editProducts', { productObj: productObj[req.params.id] });
-})
-
 router.post('/', (req, res) => {
     productsDB.post(req.body);
-    let productObj = productsDB.returnProducts();
     console.log(productObj)
-    res.render('products', { productObj: productObj });
+    res.redirect('products');
 });
 
-router.put('/:id', (req, res) => {
-    console.log(req.params.id)
-    let productObj = productsDB.editProduct(req.params.id, req.body);
-    res.render('editProducts', { productObj: productObj });
+router.get('/:id', (req, res) => {
+    let filteredProduct = productObj.filter(product => { return product.id === parseInt(req.params.id) });
+    res.render('productsId', { productObj: filteredProduct[0] })
+});
+
+router.get('/:id/edit', (req, res) => {
+    let filteredProduct = productObj.filter(product => { return product.id === parseInt(req.params.id) });
+    res.render('editProducts', { productObj: filteredProduct[0] });
+})
+
+router.put('/:id/edit', (req, res) => {
+    let filteredProduct = productObj.filter(product => { return product.id === parseInt(req.params.id) });
+    productsDB.editProduct(productObj.indexOf(filteredProduct[0]), req.body);
+    res.redirect('/products');
+});
+
+router.get('/:id/delete', (req, res) => {
+    let filteredProduct = productObj.filter(product => { return product.id === parseInt(req.params.id) });
+    res.render('deleteProduct', { productObj: filteredProduct[0] })
+});
+
+router.delete('/:id/delete', (req, res) => {
+    let filteredProduct = productObj.filter(product => { return product.id === parseInt(req.params.id) });
+    if (req.body.name === filteredProduct[0].name) {
+        let deletedProduct = productsDB.deleteProduct(productObj.indexOf(filteredProduct[0]));
+        res.render('productConfirmDelete', { deleted: deletedProduct })
+    } else {
+        res.render('deleteProduct', { error: "Please enter a valid name (Case sensitive)", productObj: filteredProduct[0] });
+    }
+
 });
 
 module.exports = router;

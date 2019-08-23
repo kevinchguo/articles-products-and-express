@@ -1,10 +1,9 @@
-#products {
+button {
     padding: 5px;
     margin: 3px;
 }
 
-#articles {
+#submitBtn {
     padding: 5px;
     margin: 3px;
-
 }

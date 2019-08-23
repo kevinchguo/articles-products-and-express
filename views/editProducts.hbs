@@ -1,12 +1,21 @@
-<form action="/products" method="put">
+<h1>
+  Edit item #:
+  {{productObj.id}}
+</h1>
+<form action="/products/{{productObj.id}}/edit?_method=PUT" method="POST">
   Product name:
-  <input type="text" name="name" value="{{name}}" />
+  <input type="text" name="name" value="{{productObj.name}}" />
   <br />
   Inventory:
-  <input type="text" name="inventory" value="{{inventory}}" />
+  <input type="text" name="inventory" value="{{productObj.inventory}}" />
   <br />
   Price:
-  <input type="text" name="price" value="{{price}}" />
+  <input type="text" name="price" value="{{productObj.price}}" />
   <br />
-  <input type="submit" value="request" />
+  <input type="submit" value="POST" id="submitBtn" />
 </form>
+<a href="/products/{{productObj.id}}">
+  <button>
+    Back
+  </button>
+</a>

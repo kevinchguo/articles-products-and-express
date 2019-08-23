@@ -1,0 +1,15 @@
+<h1>
+  You are currently deleting product:
+  {{productObj.name}}
+</h1>
+<form action="/products/{{productObj.id}}/delete?_method=DELETE" method="POST">
+  Enter product name to confirm deletion:
+  <input type="text" name="name" />
+  <input type="submit" value="DELETE" id="submitBtn" />
+</form>
+{{error}}
+<a href="/products/{{productObj.id}}">
+  <button>
+    Back
+  </button>
+</a>
