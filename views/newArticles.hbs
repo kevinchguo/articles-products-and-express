@@ -1,20 +1,20 @@
 <h1 id="pageHeader">
-  Input new product
+  Input new article
 </h1>
 <div id="infoBody">
   <div id="inputForm">
-    <form action="/products" method="post">
-      Product name:
+    <form action="/articles" method="post">
+      Title:
       <br />
-      <input type="text" name="name" />
+      <input type="text" name="title" />
       <br />
-      Inventory:
+      Author:
       <br />
-      <input type="text" name="inventory" />
+      <input type="text" name="author" />
       <br />
-      Price:
+      Body:
       <br />
-      <input type="text" name="price" />
+      <input type="text" name="body" id="articleBody" />
       <br />
       <button type="submit" id="submitBtn">
         Submit
@@ -24,7 +24,7 @@
   <div id="error">
     {{error}}
   </div>
-  <a href="/products">
+  <a href="/articles">
     <button>
       Back
     </button>

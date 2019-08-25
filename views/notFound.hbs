@@ -1,5 +1,14 @@
-<h1>
-  {{Product}}
-  {{Article}}
-  not found!
+<h1 id="pageHeader">
+  {{#if Product}}
+    Product, {{url}}, not found!
+    <div>
+      {{> notFoundProduct}}
+    </div>
+  {{/if}}
+  {{#if Article}}
+    Article, {{url}}, not found!
+    <div>
+      {{> notFoundArticles}}
+    </div>
+  {{/if}}
 </h1>

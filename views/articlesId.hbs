@@ -1,0 +1,37 @@
+<h1 id="pageHeader">
+  You are now viewing article:
+  {{articleObj.title}}
+</h1>
+<div id="infoBody">
+  <div>
+    <a href="/articles/{{articleObj.url}}/edit">
+      <button>
+        edit
+      </button>
+    </a>
+  </div>
+  <div>
+    <a href="/articles/{{articleObj.url}}/delete">
+      <button>
+        delete
+      </button>
+    </a>
+  </div>
+  <div>
+    Article #:
+    {{articleObj.id}}
+  </div>
+  <p>
+    Author:
+    {{articleObj.author}}
+  </p>
+  <p>
+    Body:
+    {{articleObj.body}}
+  </p>
+  <a href="/articles">
+    <button>
+      Back
+    </button>
+  </a>
+</div>

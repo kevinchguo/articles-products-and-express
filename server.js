@@ -10,7 +10,7 @@ const articleRoutes = require('./routes/articles');
 const PORT = 8080;
 
 app.use(methodOverride('_method'));
-app.use(bodyParser.urlencoded({ extened: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs'); //uses res.render()
 app.use('/products', productRoutes);

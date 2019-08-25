@@ -1,13 +1,19 @@
-<h1>
+<h1 id="pageHeader">
   You are currently deleting product:
   {{productObj.name}}
 </h1>
-<form action="/products/{{productObj.id}}/delete?_method=DELETE" method="POST">
-  Enter product name to confirm deletion:
-  <input type="text" name="name" />
-  <input type="submit" value="DELETE" id="submitBtn" />
-</form>
-{{error}}
+<div id="inputForm">
+  <form action="/products/{{productObj.id}}/delete?_method=DELETE" method="POST">
+    Enter product name to confirm deletion:
+    <input type="text" name="name" />
+    <button type="submit" id="submitBtn">
+      Submit
+    </button>
+  </form>
+</div>
+<div id="error">
+  {{error}}
+</div>
 <a href="/products/{{productObj.id}}">
   <button>
     Back

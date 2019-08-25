@@ -8,19 +8,20 @@ let productsDB = (function () {
     }
 
     function post(request) {
-        products.push(request);
+        request.name = request.name.trim();
+        request.url = request.name.replace(/ /gi, '-');
         request.price = parseFloat(request.price);
         request.inventory = parseFloat(request.inventory);
         request.id = itemID;
+        products.push(request);
         itemID++;
     }
 
     function editProduct(index, request) {
-        console.log("Before: " + products[index].name);
+        products[index].name = request.name.trim();
+        products[index].url = request.name.replace(/ /gi, '-');
         products[index].price = parseFloat(request.price);
         products[index].inventory = parseFloat(request.inventory);
-        products[index].name = request.name;
-        console.log("After: " + products[index].name)
         return products[index];
     }
 
@@ -37,7 +38,7 @@ let productsDB = (function () {
         post: post,
         editProduct: editProduct,
         deleteProduct: deleteProduct,
-        returnDeleted: returnDeleted
+        returnDeleted: returnDeleted,
     }
 }());
 

@@ -1,9 +1,78 @@
-button {
-    padding: 5px;
-    margin: 3px;
+a {
+    color: none;
 }
 
-#submitBtn {
-    padding: 5px;
+a:link {
+    text-decoration: none;
+    color: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: none;
+}
+
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#infoBody {
+    margin: 5px;
+}
+
+button {
+    padding: 5px 10px 5px 10px;;
     margin: 3px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ef8843;
+    color: white;
+}
+
+#pageHeader {
+    background-color: #262626;
+    color: #7d7d7d;
+    margin: 0;
+    padding: 20px 10px 20px 10px;
+}
+
+#directory {
+    display: flex;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#inputForm {
+    margin: 20px;
+}
+
+#listOfItems {
+    margin: 20px;
+}
+
+#error {
+    color: red;
+}
+
+#deletedItem {
+    color: red;
 }
