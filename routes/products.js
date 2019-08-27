@@ -10,22 +10,22 @@ app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs'); //uses res.render()
 
 router.get('/', (req, res) => {
-    res.render('products', { productObj: productObj });
+    res.render('products/products', { productObj: productObj });
 });
 
 router.get('/new', (req, res) => {
-    res.render('newProducts');
+    res.render('products/newProducts');
 });
 
 router.post('/', (req, res) => {
     let filteredProduct = productObj.filter(product => { return product.name === req.body.name.trim() });
     if (req.body.name === "") {
-        res.render('newProducts', { error: 'Please enter a valid name' });
+        res.render('products/newProducts', { error: 'Please enter a valid name' });
     } else if (req.body.inventory === "" || req.body.price === "" || isNaN(req.body.inventory) || isNaN(req.body.price)) {
-        res.render('newProducts', { error: 'Please enter a valid number' });
+        res.render('products/newProducts', { error: 'Please enter a valid number' });
     } else {
         if (filteredProduct[0]) {
-            res.render('newProducts', { error: "Product already exists" });
+            res.render('products/newProducts', { error: "Product already exists" });
         } else {
             productsDB.post(req.body);
             res.redirect('products');
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
     if (!filteredProductURL[0]) {
         res.redirect('/products/new');
     } else {
-        res.render('productsId', { productObj: filteredProductURL[0] });
+        res.render('products/productsId', { productObj: filteredProductURL[0] });
     };
 });
 
@@ -47,7 +47,7 @@ router.get('/:id/edit', (req, res) => {
     if (!filteredProductURL[0]) {
         res.render('notFound', { Product: true, url: req.params.id });
     } else {
-        res.render('editProducts', { productObj: filteredProductURL[0] });
+        res.render('products/editProducts', { productObj: filteredProductURL[0] });
     }
 });
 
@@ -55,9 +55,9 @@ router.put('/:id/edit', (req, res) => {
     let filteredProductURL = productObj.filter(product => { return product.url === req.params.id || product.id === parseInt(req.params.id) });
     let filteredProduct = productObj.filter(product => { return product.name === req.body.name.trim() });
     if (req.body.name === "") {
-        res.render('editProducts', { error: 'Please enter a valid name', productObj: filteredProduct[0] });
+        res.render('products/editProducts', { error: 'Please enter a valid name', productObj: filteredProduct[0] });
     } else if (req.body.inventory === "" || req.body.price === "" || isNaN(req.body.inventory) || isNaN(req.body.price)) {
-        res.render('editProducts', { error: 'Please enter a valid number', productObj: filteredProduct[0] });
+        res.render('products/editProducts', { error: 'Please enter a valid number', productObj: filteredProduct[0] });
     } else {
         productsDB.editProduct(productObj.indexOf(filteredProductURL[0]), req.body);
         res.redirect('/products');
@@ -69,7 +69,7 @@ router.get('/:id/delete', (req, res) => {
     if (!filteredProductURL[0]) {
         res.render('notFound', { Product: true, url: req.params.id });
     } else {
-        res.render('deleteProduct', { productObj: filteredProductURL[0] })
+        res.render('products/deleteProduct', { productObj: filteredProductURL[0] })
     }
 });
 
@@ -79,9 +79,9 @@ router.delete('/:id/delete', (req, res) => {
         let sec = 3;
         let deletedProduct = filteredProductURL[0].name;
         productsDB.deleteProduct(productObj.indexOf(filteredProductURL[0]));
-        res.render('productConfirmDelete', { deleted: deletedProduct, timer: setInterval(function () { return sec-- }) })
+        res.render('products/productConfirmDelete', { deleted: deletedProduct, timer: setInterval(function () { return sec-- }) })
     } else {
-        res.render('deleteProduct', { error: "Please enter a valid name (Case sensitive)", productObj: filteredProductURL[0] });
+        res.render('products/deleteProduct', { error: "Please enter a valid name (Case sensitive)", productObj: filteredProductURL[0] });
     }
 
 });

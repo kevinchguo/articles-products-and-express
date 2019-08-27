@@ -10,24 +10,24 @@ app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs'); //uses res.render()
 
 router.get('/', (req, res) => {
-    res.render('articles', { articleObj: articleObj });
+    res.render('articles/articles', { articleObj: articleObj });
 });
 
 router.get('/new', (req, res) => {
-    res.render('newArticles');
+    res.render('articles/newArticles');
 });
 
 router.post('/', (req, res) => {
     let filteredArticle = articleObj.filter(article => { return article.title === req.body.title.trim() });
     if (req.body.title === "") {
-        res.render('newArticles', { error: 'Please enter a valid title' });
+        res.render('articles/newArticles', { error: 'Please enter a valid title' });
     } else if (req.body.author === "") {
-        res.render('newArticles', { error: 'Please enter a valid author' });
+        res.render('articles/newArticles', { error: 'Please enter a valid author' });
     } else if (req.body.body === "") {
-        res.render('newArticles', { error: 'Please enter a valid body' });
+        res.render('articles/newArticles', { error: 'Please enter a valid body' });
     } else {
         if (filteredArticle[0]) {
-            res.render('newArticles', { error: "Article already exists" });
+            res.render('articles/newArticles', { error: "Article already exists" });
         } else {
             articlesDB.post(req.body);
             res.redirect('articles');
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
     if (!filteredArticle[0]) {
         res.redirect('/articles/new');
     } else {
-        res.render('articlesId', { articleObj: filteredArticle[0] });
+        res.render('articles/articlesId', { articleObj: filteredArticle[0] });
     };
 });
 
@@ -49,7 +49,7 @@ router.get('/:id/edit', (req, res) => {
     if (!filteredArticle[0]) {
         res.render('notFound', { Article: true, url: req.params.id });
     } else {
-        res.render('editArticles', { articleObj: filteredArticle[0] });
+        res.render('articles/editArticles', { articleObj: filteredArticle[0] });
     }
 })
 
@@ -64,7 +64,7 @@ router.get('/:id/delete', (req, res) => {
     if (!filteredArticle[0]) {
         res.render('notFound', { Article: true, url: req.params.id });
     } else {
-        res.render('deleteArticle', { articleObj: filteredArticle[0] })
+        res.render('articles/deleteArticle', { articleObj: filteredArticle[0] })
     }
 });
 
@@ -73,9 +73,9 @@ router.delete('/:id/delete', (req, res) => {
     if (req.body.title === filteredArticle[0].title) {
         let deletedArticle = filteredArticle[0].title;
         articlesDB.deleteArticle(articleObj.indexOf(filteredArticle[0]));
-        res.render('ArticleConfirmDelete', { deleted: deletedArticle })
+        res.render('articles/ArticleConfirmDelete', { deleted: deletedArticle })
     } else {
-        res.render('deleteArticle', { error: "Please enter a valid title (Case sensitive)", articleObj: filteredArticle[0] });
+        res.render('articles/deleteArticle', { error: "Please enter a valid title (Case sensitive)", articleObj: filteredArticle[0] });
     }
 
 });
