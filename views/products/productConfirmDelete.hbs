@@ -1,0 +1,22 @@
+<h1 id="pageHeader">
+  Product
+  <span id="deletedItem">
+    "
+    {{deleted}}
+    "
+  </span>
+  successfully deleted, you will be redirected in 3 seconds...
+</h1>
+<div id="infoBody">
+  <script>
+    setTimeout(function () {
+    window.location = '/products'
+  }, 3000)
+  </script>
+  <div>
+    If not redirected, click
+    <a href="/products">
+      here.
+    </a>
+  </div>
+</div>

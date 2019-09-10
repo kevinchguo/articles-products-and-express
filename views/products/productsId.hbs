@@ -1,0 +1,41 @@
+<h1 id="pageHeader">
+  You are now viewing product:
+  {{productObj.name}}
+</h1>
+<div id="infoBody">
+  <div id="editDelete">
+    <div>
+      <a href="/products/{{productObj.url}}/edit">
+        <button>
+          edit
+        </button>
+      </a>
+    </div>
+    <div>
+      <a href="/products/{{productObj.url}}/delete">
+        <button>
+          delete
+        </button>
+      </a>
+    </div>
+  </div>
+  <div id="listOfItems">
+    Item #:
+    {{productObj.id}}
+    <p>
+      Inventory:
+      {{productObj.inventory}}
+    </p>
+    <p>
+      Price: $
+      {{productObj.price}}
+    </p>
+  </div>
+  <div id="backBtn">
+    <a href="/products">
+      <button>
+        Back
+      </button>
+    </a>
+  </div>
+</div>

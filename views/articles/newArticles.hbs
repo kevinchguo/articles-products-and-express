@@ -1,0 +1,34 @@
+<h1 id="pageHeader">
+  Input new article
+</h1>
+<div id="infoBody">
+  <div id="inputForm">
+    <form action="/articles" method="post">
+      Title:
+      <br />
+      <input type="text" name="title" />
+      <br />
+      Author:
+      <br />
+      <input type="text" name="author" />
+      <br />
+      Body:
+      <br />
+      <input type="text" name="body" id="articleBody" />
+      <br />
+      <button type="submit" id="submitBtn">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div id="error">
+    {{error}}
+  </div>
+  <div id="backBtn">
+    <a href="/articles">
+      <button>
+        Back
+      </button>
+    </a>
+  </div>
+</div>

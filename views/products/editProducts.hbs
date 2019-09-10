@@ -1,0 +1,36 @@
+<h1 id="pageHeader">
+  Edit Product:
+  {{productObj.name}}
+</h1>
+<div id="infoBody">
+  <p id="itemNo">
+    product #:
+    {{productObj.id}}
+  </p>
+  <div id="inputForm">
+    <form action="/products/{{productObj.id}}/edit?_method=PUT" method="POST">
+      Product name:
+      <input type="text" name="name" value="{{productObj.name}}" />
+      <br />
+      Inventory:
+      <input type="text" name="inventory" value="{{productObj.inventory}}" />
+      <br />
+      Price:
+      <input type="text" name="price" value="{{productObj.price}}" />
+      <br />
+      <button type="submit" id="submitBtn">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div id="error">
+    {{error}}
+  </div>
+  <div id="backBtn">
+    <a href="/products/{{productObj.id}}">
+      <button>
+        Back
+      </button>
+    </a>
+  </div>
+</div>

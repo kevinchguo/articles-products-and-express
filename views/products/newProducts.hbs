@@ -1,0 +1,34 @@
+<h1 id="pageHeader">
+  Input new product
+</h1>
+<div id="infoBody">
+  <div id="inputForm">
+    <form action="/products" method="post">
+      Product name:
+      <br />
+      <input type="text" name="name" />
+      <br />
+      Inventory:
+      <br />
+      <input type="text" name="inventory" />
+      <br />
+      Price:
+      <br />
+      <input type="text" name="price" />
+      <br />
+      <button type="submit" id="submitBtn">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div id="error">
+    {{error}}
+  </div>
+  <div id="backBtn">
+    <a href="/products">
+      <button>
+        Back
+      </button>
+    </a>
+  </div>
+</div>

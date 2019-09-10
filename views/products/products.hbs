@@ -1,0 +1,42 @@
+<h1 id="pageHeader">
+  List of products
+</h1>
+<div id="infoBody">
+  <a href="/products/new">
+    <button id="newItems">
+      Add new products
+    </button>
+  </a>
+  <div id="listOfItems">
+    {{#each productObj}}
+      <div id="{{id}}">
+        <h2 class="itemHeader">
+          Product name:
+          <a href="/products/{{url}}">
+            {{name}}
+          </a>
+        </h2>
+        <p class="itemId1">
+          Item#:
+          {{id}}
+        </p>
+        <p class="itemId2">
+          Inventory:
+          {{inventory}}
+        </p>
+        <p class="itemId3">
+          Price:
+        $
+          {{price}}
+        </p>
+      </div>
+    {{/each}}
+  </div>
+  <div id="backBtn">
+    <a href="/">
+      <button>
+        Back
+      </button>
+    </a>
+  </div>
+</div>

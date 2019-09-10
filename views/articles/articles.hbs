@@ -1,0 +1,41 @@
+<h1 id="pageHeader">
+  List of articles
+</h1>
+<div id="infoBody">
+  <a href="/articles/new">
+    <button id="newItems">
+      Add new articles
+    </button>
+  </a>
+  <div id="listOfItems">
+    {{#each articleObj}}
+      <div id="{{id}}">
+        <h2 class="itemHeader">
+          Title:
+          <a href="/articles/{{url}}">
+            {{title}}
+          </a>
+        </h2>
+        <pp class="itemId1">
+          Article#:
+          {{id}}
+        </p>
+        <p class="itemId2">
+          Author:
+          {{author}}
+        </p>
+        <p class="itemId3">
+          Body:
+          {{body}}
+        </p>
+      </div>
+    {{/each}}
+  </div>
+  <div id="backBtn"> 
+   <a href="/">
+    <button>
+      Back
+    </button>
+   </a>
+  </div>
+</div>  

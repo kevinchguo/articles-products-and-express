@@ -1,0 +1,23 @@
+<h1 id="pageHeader">
+  You are currently deleting article:
+  {{articleObj.title}}
+</h1>
+<div id="inputForm">
+  <form action="/articles/{{articleObj.id}}/delete?_method=DELETE" method="POST">
+    Enter article name to confirm deletion:
+    <input type="text" name="title" />
+    <button type="submit" id="submitBtn">
+      Submit
+    </button>
+  </form>
+</div>
+<div id="error">
+  {{error}}
+</div>
+<div id="backBtn">
+  <a href="/articles/{{articleObj.id}}">
+    <button>
+      Back
+    </button>
+  </a>
+</div>

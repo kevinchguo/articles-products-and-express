@@ -1,0 +1,22 @@
+<h1 id="pageHeader">
+  Article
+  <span id="deletedItem">
+    "
+    {{deleted}}
+    "
+  </span>
+  successfully deleted, you will be redirected in 3 seconds...
+</h1>
+<div id="infoBody">
+  <script>
+    setTimeout(function () {
+    window.location = '/articles'
+  }, 3000)
+  </script>
+  <div>
+    If not redirected, click
+    <a href="/articles">
+      here.
+    </a>
+  </div>
+</div>
